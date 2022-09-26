@@ -10,33 +10,108 @@
 </head>
 
 <body>
+    <header id="header">
+        <img id="logo-img" src="./images/logo.png" alt="company logo">
+        <img id="menu-logo" src="./images/menu-icon.png" alt="menu icon">
+    </header>
     <main id="main-container">
-        <header id="header">
-            <img id="logo-img" src="./images/logo.png" alt="company logo">
-            <img id="menu-logo" src="./images/menu-icon.png" alt="menu icon">
-        </header>
+
         <section id="global-width">
             <section id="button-section">
-                <button id="filter-btn" type="button">Filter</button>
-                
-                <button id=sort-btn" type="button">Sort</button>
-                <button id=add-btn" type="button">Add</button>
+                <section id="filter-box">
+                    <section id="filter-box-head">
+                        <p>Filter</p>
+                        <i class="arrow down"></i>
+                    </section>
+                    <section id="filter-dropdown">
+                        <ul id="filter-list">
+                            <li class="filter-list-items">skill 1</li>
+                            <li class="filter-list-items">skill 2</li>
+                            <li class="filter-list-items">skill 3</li>
+                            <li class="filtr-list-items">skill 4</li>
+                        </ul>
+                    </section>
+                </section>
+
+                <section id="sort-box">
+                    <section id="sort-box-head">
+                        <p>Sort</p>
+                        <i class="arrow down"></i>
+                    </section>
+                    <section id="sort-dropdown">
+                        <ul id="sort-list">
+                            <li class="list-items">alphabetic (a-z)</li>
+                            <li class="list-items">alphabetic (z-a)</li>
+                            <li class="list-items">emp-id (ascending)</li>
+                            <li class="list-items">emp-id (descending)</li>
+                        </ul>
+                    </section>
+                </section>
+                <button id="add-btn" type="button">Add</button>
+
+
             </section>
             <section id="table-container">
-            <table id="table">
-                <thead id="thead">
+                <table id="table">
+                    <thead id="thead">
 
-                </thead>
-                <tbody id="tbody">
+                    </thead>
+                    <tbody id="tbody">
 
-                </tbody>
-            </table>
-        </section>
-        </section>
-        <footer id="footer">
-            <img src="./images/footer-logo.png" alt="footer-logo">
-        </footer>
+                    </tbody>
+                </table>
+            </section>
+            <section id="modal-box" class="modal">
+
+                <!-- Modal content -->
+                <section class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2 id="add-heading">Add Employee</h2>
+                    <section id="add_empl_id" class="emp_data">
+                        <p>Employee ID:</p>
+                        <input type="text">
+                    </section>
+                    <section id="add_empl_name" class="emp_data">
+                        <p>Employee Name:</p>
+                        <input type="text">
+                    </section>
+                    <section id="add_empl_desig" class="emp_data">
+                        <p>Employee Designation:</p>
+                        <input type="text">
+                    </section>
+                    <section id="add_empl_email" class="emp_data">
+                        <p>Employee Email-ID:</p>
+                        <input type="text">
+                    </section>
+                    <section id="add_empl_experience" class="emp_data">
+                        <p>Employee Experience:</p>
+                        <input type="text">
+                    </section>
+                    <section id="skill-box">
+                        <section id="skill-box-head">
+                            <p>Add Skills</p>
+                            <i class="arrow down"></i>
+                        </section>
+                        <section id="skill-dropdown">
+                            <ul id="skill-list">
+                                <li class="skill-list-items">Skill 1</li>
+                                <li class="skill-list-items">Skill 2</li>
+                                <li class="skill-list-items">Skill 3</li>
+                                <li class="skill-list-items">Skill 4</li>
+                            </ul>
+                        </section>
+                    </section>
+                    <section id="modal-btn_section">
+                        <button type="button">Add </button>
+                    </section>
+
+
+                </section>
+
     </main>
+    <footer id="footer">
+        <img src="./images/footer-logo.png" alt="footer-logo">
+    </footer>
     <script src="script.js"></script>
 </body>
 
