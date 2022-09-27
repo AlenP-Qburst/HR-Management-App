@@ -43,11 +43,18 @@ button {
     border: 1px solid black;
     cursor: pointer;
     border-radius: 5px;
-    
+
 }
+
 button:hover {
     background-color: #bcadfa;
 }
+
+#dlt-btn {
+    padding: 5px;
+    font-size: small;
+}
+
 #table-container {
     padding: 10px 0;
     width: 100%;
@@ -57,33 +64,38 @@ button:hover {
     z-index: 1;
 
 }
+
 table {
     width: 100%;
 
 
 }
+
 table,
 th,
 td {
     border: 1px solid black;
     border-collapse: collapse;
 }
+
 #thead th {
     background-color: #856bfc;
     color: white;
     padding: 5px 10px;
     position: sticky;
-    top: -15px;
+    top: -13px;
 
 }
+
 #tbody td {
     text-align: center;
     padding: 3px 8px;
 }
 
 #tbody tr:nth-of-type(even) {
-    background-color: #f3f3f3;
+    background-color: #e9e6e6;
 }
+
 .modal {
     display: none;
     position: fixed;
@@ -128,8 +140,8 @@ td {
 
 .emp_data {
     display: flex;
-
-
+    margin: 0;
+    padding: 5px 15px;
 }
 
 #modal-btn_section {
@@ -137,9 +149,22 @@ td {
     text-align: center;
     margin-top: 20px;
 }
+
+#dlt-modal-content {
+    text-align: center;
+}
+
+#dltBtn-sect {
+    padding-top: 20px;
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+}
+
 #filter-dropdown {
     width: 100%;
 }
+
 #filter-box {
     width: 25%;
     position: relative;
@@ -207,13 +232,20 @@ td {
     z-index: 3;
     background-color: #ffffff;
     padding: 0;
+    list-style: none;
+
 }
 
-#skill-list .skill-list-items {
+.skill-list-items {
     list-style: none;
     border: 1px solid black;
     width: 100%;
     padding: 3px;
+}
+
+.skill-list-items:hover {
+    background-color: #9787e0;
+    color: white;
 }
 
 #sort-box {
@@ -259,6 +291,11 @@ td {
     border: 1px solid black;
     width: 100%;
     padding: 3px;
+}
+
+.list-items:hover {
+    background-color: #9787e0;
+    color: white;
 }
 
 #footer {

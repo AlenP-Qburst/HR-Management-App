@@ -1,10 +1,15 @@
 fetch("./data.json")
     .then(response =>
         response.json())
-    .then(data => emplData(data));
+    .then(data => {
+        fetch("./skills.json")
+            .then(res => res.json())
+            .then(skills =>
+                (emplData(data, skills)))
+    });
 
 
-function emplData(data) {
+function emplData(data, skillSet) {
     let thead = document.getElementById("thead");
     let table_row_head = document.createElement("tr");
     table_row_head.setAttribute("id", "tr_head");
@@ -14,14 +19,21 @@ function emplData(data) {
         let tbody = document.getElementById("tbody");
         let table_row_data = document.createElement("tr");
         table_row_data.setAttribute("class", "tr_data");
+        let reqSkill = item.skills.map(skillId => {
+            for (let skillObj of skillSet) {
+                if (skillObj.skill_id == skillId) {
+                    return skillObj.skill_name;
+                }
+            }
+        })
         table_row_data.innerHTML = `<td>${item.emp_id}</td><td>${item.emp_name}</td>
-        <td>${item.emp_desig}</td><td>${item.email_id}</td><td>${item.skills}</td>
-        <td><button type="button">Delete</button></td>`
+        <td>${item.emp_desig}</td><td>${item.email_id}</td><td>${reqSkill.join(", ")}</td>
+        <td><button id="dlt-btn" onclick="dltModal()">Delete</button></td>`
         tbody.appendChild(table_row_data);
     });
 
 }
-
+//Add-Modal Box
 let modal = document.getElementById("modal-box");
 
 // Get the button that opens the modal
@@ -46,6 +58,18 @@ window.onclick = function (event) {
         modal.style.display = "none";
     }
 }
+// Delete-Modal Box
+function dltModal() {
+    let dltModal = document.getElementById("dlt-modal");
+    dltModal.style.display = "block";
+    let noBtn = document.getElementById("noBtn");
+    noBtn.addEventListener("click", () => {
+        dltModal.style.display = "none";
+    })
+}
+
+
+
 
 //filter dropdown
 
@@ -60,17 +84,30 @@ filter_dropdown.addEventListener("click", () => {
 })
 
 
-//skill dropdown
+//skill dropdown inside Add-Modal box
 
-let skill_dropdown = document.getElementById("skill-box-head");
-let skill_list = document.getElementById("skill-list");
-skill_dropdown.addEventListener("click", () => {
+fetch("./skills.json")
+    .then(resp => resp.json())
+    .then(skills => skillList(skills));
 
-    if (skill_list.style.display == "block") {
-        skill_list.style.display = "none";
-    } else
-        skill_list.style.display = "block";
-})
+function skillList(skills) {
+    skills.forEach(item => {
+        let skill_list = document.getElementById("skill-list");
+        let list_item = document.createElement("li");
+        list_item.setAttribute("class", "skill-list-items")
+        list_item.innerHTML = `<li>${item.skill_name}</li>`;
+        skill_list.appendChild(list_item);
+    });
+    let skill_dropdown = document.getElementById("skill-box-head");
+    let skill_list = document.getElementById("skill-list");
+    skill_dropdown.addEventListener("click", () => {
+
+        if (skill_list.style.display == "block") {
+            skill_list.style.display = "none";
+        } else
+            skill_list.style.display = "block";
+    })
+}
 //sort dropdown
 
 let sort_dropdown = document.getElementById("sort-box-head");
