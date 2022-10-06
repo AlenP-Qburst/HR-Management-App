@@ -10,53 +10,40 @@
 </head>
 
 <body>
-    <header id="header">
-        <img id="logo-img" src="./images/logo.png" alt="company logo">
-        <img id="menu-logo" src="./images/menu-icon.png" alt="menu icon">
+    <header class="header">
+        <img class="logo-img" src="./images/samplelogo.png" alt="company logo">
+        <img class="menu-logo" src="./images/samplemenu.png" alt="menu icon">
     </header>
-    <main id="main-container">
+    <main class="main-container">
 
-        <section id="global-width">
-            <section id="button-section">
-                <section id="filter-box">
-                    <section id="filter-box-head">
-                        <p>Filter</p>
-                        <i class="arrow down"></i>
-                    </section>
-                    <section id="filter-dropdown">
-                        <ul id="filter-list">
-                            <li class="filter-list-items">skill 1</li>
-                            <li class="filter-list-items">skill 2</li>
-                            <li class="filter-list-items">skill 3</li>
-                            <li class="filtr-list-items">skill 4</li>
-                        </ul>
-                    </section>
-                </section>
+        <section class="global-width">
+            <h1 class="main-heading">Employee List</h1>
+            <section class="button-section">
+                <select class="select">
+                    <option selected>Filter</option>
+                    <option value="HTML">HTML</option>
+                    <option value="CSSL">CSS</option>
+                    <option value="JS">JS</option>
+                    <option value="MySQL">MySQL</option>
 
-                <section id="sort-box">
-                    <section id="sort-box-head">
-                        <p>Sort</p>
-                        <i class="arrow down"></i>
-                    </section>
-                    <section id="sort-dropdown">
-                        <ul id="sort-list">
-                            <li class="list-items">alphabetic (a-z)</li>
-                            <li class="list-items">alphabetic (z-a)</li>
-                            <li class="list-items">emp-id (ascending)</li>
-                            <li class="list-items">emp-id (descending)</li>
-                        </ul>
-                    </section>
-                </section>
-                <button id="add-btn" type="button">Add</button>
-
-
+                </select>
+                </select>
+                <select class="select">
+                    <option disabled selected>Sort</option>
+                    <option value="HTML">alphabetic (a-z)</option>
+                    <option value="CSSL">alphabetic (z-a)</option>
+                    <option value="JS">emp-id (ascending)</option>
+                    <option value="MySQL">emp-id (descending)</option>
+                </select>
+                <button id="add-btn" type="button">Add Employee</button>
             </section>
-            <section id="table-container">
-                <table id="table">
-                    <thead id="thead">
+
+            <section class="table-container">
+                <table id="table" class="table">
+                    <thead id="thead" class="thead">
 
                     </thead>
-                    <tbody id="tbody">
+                    <tbody id="tbody" class="tbody">
 
                     </tbody>
                 </table>
@@ -65,56 +52,90 @@
 
                 <!-- Modal content -->
                 <section class="modal-content">
-                    <span class="close">&times;</span>
-                    <h2 id="add-heading">Add Employee</h2>
-                    <section id="add_empl_id" class="emp_data">
-                        <p>Employee ID:</p>
-                        <input type="text">
-                    </section>
-                    <section id="add_empl_name" class="emp_data">
-                        <p>Employee Name:</p>
-                        <input type="text">
-                    </section>
-                    <section id="add_empl_desig" class="emp_data">
-                        <p>Employee Designation:</p>
-                        <input type="text">
-                    </section>
-                    <section id="add_empl_email" class="emp_data">
-                        <p>Employee Email-ID:</p>
-                        <input type="text">
-                    </section>
-                    <section id="add_empl_experience" class="emp_data">
-                        <p>Employee Experience:</p>
-                        <input type="text">
-                    </section>
-                    <section id="skill-box">
-                        <section id="skill-box-head">
-                            <p>Add Skills</p>
-                            <i class="arrow down"></i>
-                        </section>
-                        <section id="skill-dropdown">
-                            <ul id="skill-list">
+                    <div class="modal-heading">
+                        <span class="close">&times;</span>
+                        <h2 class="add-heading">Add Employee</h2>
+                    </div>
 
-                            </ul>
-                        </section>
-                    </section>
-                    <section id="modal-btn_section">
+                    <div class="modal-flex">
+                        <label for="emp_id">Employee ID</label><br>
+                        <input type="text" id="emp_id"><br>
+                        <label for="emp_name">Employee Name</label><br>
+                        <input type="text" id="emp_name"><br>
+                        <label for="emp_desig">Designation</label><br>
+                        <input type="text" id="emp_desig"><br>
+                        <label for="email_id">Email-ID</label><br>
+                        <input type="text" id="email_id"><br>
+                        <label for="emp_exp">Experience</label><br>
+                        <input type="text" id="emp_exp"><br>
+                        <label for="emp_phone">Phone</label><br>
+                        <input type="text" id="emp_phone"><br>
+                        <label>Skills</label><br>
+                        <select class="select" id="add-skill-drpdown">
+                            <option disabled selected>Add Skills</option>
+                            <option value="HTML">HTML</option>
+                            <option value="CSSL">CSS</option>
+                            <option value="JS">JS</option>
+                            <option value="MySQL">MySQL</option>
+                        </select>
+
+                    </div>
+
+                    <section id="modal-btn_section" class="modal-btn_section">
                         <button type="button">Add </button>
                     </section>
                 </section>
             </section>
             <section id="dlt-modal" class="modal">
                 <section id="dlt-modal-content" class="modal-content">
+                    <img src="./images/cross-mark.png" alt="cross-mark" id="cross-img">
                     <h2>Are you sure want to delete ?</h2>
                     <section id="dltBtn-sect">
-                        <button id="yesBtn">Yes</button>
-                        <button id="noBtn">No</button>
+                        <button id="no-btn">No</button>
+                        <button id="yes-btn">Yes</button>
+
                     </section>
                 </section>
             </section>
+            <section id="edit-modal" class="modal">
+                <section id="edit-modal-content" class="modal-content">
+                    <div class="modal-heading">
+                        <span class="close">&times;</span>
+                        <h2 class="add-heading">Update Employee</h2>
+                    </div>
+                    <div class="modal-flex">
+                        <label>Employee ID</label><br>
+                        <input type="text"><br>
+                        <label>Employee Name</label><br>
+                        <input type="text"><br>
+                        <label>Designation</label><br>
+                        <input type="text"><br>
+                        <label>Email-ID</label><br>
+                        <input type="text"><br>
+                        <label>Experience</label><br>
+                        <input type="text"><br>
+                        <label>Phone</label><br>
+                        <input type="text"><br>
+                        <label>Skills</label><br>
+                        <select class="select" id="add-skill-drpdown">
+                            <option disabled selected>Add Skills</option>
+                            <option value="HTML">HTML</option>
+                            <option value="CSSL">CSS</option>
+                            <option value="JS">JS</option>
+                            <option value="MySQL">MySQL</option>
+                        </select>
+                    </div>
+                    <section class="modal-btn_section">
+                        <button id="cancel-btn">Cancel</button>
+                        <button id="edt-btn">Edit</button>
+
+                    </section>
+                </section>
+            </section>
+        </section>
     </main>
-    <footer id="footer">
-        <img src="./images/footer-logo.png" alt="footer-logo">
+    <footer class="footer">
+        <p class="copyright"> ©2018-2019 DeveloperHero|All rights reserved</p>
     </footer>
     <script src="script.js"></script>
 </body>

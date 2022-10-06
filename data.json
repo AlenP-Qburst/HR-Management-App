@@ -4,18 +4,15 @@
         "emp_desig": "Developer",
         "emp_exp": "2+ years",
         "email_id": "kriskat43@gmail.com",
-        "skills": [1, 2, 3, 4]
-
-
-
+        "skills": [1,2,3,4]
     },
     {
         "emp_id": 2,
-        "emp_name": "Loffy",
+        "emp_name": "vdsLoffy",
         "emp_desig": "Data Engineer",
         "emp_exp": "4+ years",
         "email_id": "loffytophy88@gmail.com",
-        "skills": [1, 2, 3, 4]
+        "skills": [1,2,3,4,5]
     },
     {
         "emp_id": 3,
@@ -23,7 +20,7 @@
         "emp_desig": "BA",
         "emp_exp": "5+ years",
         "email_id": "vivanark11@gmail.com",
-        "skills": [1, 2, 3, 4]
+        "skills": [2,6,1,3, 4]
     },
     {
         "emp_id": 4,
