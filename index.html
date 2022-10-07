@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>HR Management App</title>
+</head>
+
+<body>
+    <header class="header">
+        <img class="logo-img" src="./images/samplelogo.png" alt="company logo">
+        <img class="menu-logo" src="./images/samplemenu.png" alt="menu icon">
+    </header>
+    <main class="main-container">
+
+        <section class="global-width">
+            <h1 class="main-heading">Employee List</h1>
+            <section class="button-section">
+                <select class="select">
+                    <option selected>Filter</option>
+                    <option value="HTML">HTML</option>
+                    <option value="CSSL">CSS</option>
+                    <option value="JS">JS</option>
+                    <option value="MySQL">MySQL</option>
+
+                </select>
+                </select>
+                <select class="select">
+                    <option disabled selected>Sort</option>
+                    <option value="HTML">alphabetic (a-z)</option>
+                    <option value="CSSL">alphabetic (z-a)</option>
+                    <option value="JS">emp-id (ascending)</option>
+                    <option value="MySQL">emp-id (descending)</option>
+                </select>
+                <button id="add-btn" type="button">Add Employee</button>
+            </section>
+
+            <section class="table-container">
+                <table id="table" class="table">
+                    <thead id="thead" class="thead">
+
+                    </thead>
+                    <tbody id="tbody" class="tbody">
+
+                    </tbody>
+                </table>
+            </section>
+            <section id="modal-box" class="modal">
+
+                <!-- Modal content -->
+                <section class="modal-content">
+                    <div class="modal-heading">
+                        <span class="close">&times;</span>
+                        <h2 class="add-heading">Add Employee</h2>
+                    </div>
+
+                    <div class="modal-flex">
+                        <label for="emp_id">Employee ID</label><br>
+                        <input type="text" id="emp_id"><br>
+                        <label for="emp_name">Employee Name</label><br>
+                        <input type="text" id="emp_name"><br>
+                        <label for="emp_desig">Designation</label><br>
+                        <input type="text" id="emp_desig"><br>
+                        <label for="email_id">Email-ID</label><br>
+                        <input type="text" id="email_id"><br>
+                        <label for="emp_exp">Experience</label><br>
+                        <input type="text" id="emp_exp"><br>
+                        <label for="emp_phone">Phone</label><br>
+                        <input type="text" id="emp_phone"><br>
+                        <label>Skills</label><br>
+                        <select class="select" id="add-skill-drpdown">
+                            <option disabled selected>Add Skills</option>
+                            <option value="HTML">HTML</option>
+                            <option value="CSSL">CSS</option>
+                            <option value="JS">JS</option>
+                            <option value="MySQL">MySQL</option>
+                        </select>
+
+                    </div>
+
+                    <section id="modal-btn_section" class="modal-btn_section">
+                        <button type="button">Add </button>
+                    </section>
+                </section>
+            </section>
+            <section id="dlt-modal" class="modal">
+                <section id="dlt-modal-content" class="modal-content">
+                    <img src="./images/cross-mark.png" alt="cross-mark" id="cross-img">
+                    <h2>Are you sure want to delete ?</h2>
+                    <section id="dltBtn-sect">
+                        <button id="no-btn">No</button>
+                        <button id="yes-btn">Yes</button>
+
+                    </section>
+                </section>
+            </section>
+            <section id="edit-modal" class="modal">
+                <section id="edit-modal-content" class="modal-content">
+                    <div class="modal-heading">
+                        <span class="close">&times;</span>
+                        <h2 class="add-heading">Update Employee</h2>
+                    </div>
+                    <div class="modal-flex">
+                        <label>Employee ID</label><br>
+                        <input type="text"><br>
+                        <label>Employee Name</label><br>
+                        <input type="text"><br>
+                        <label>Designation</label><br>
+                        <input type="text"><br>
+                        <label>Email-ID</label><br>
+                        <input type="text"><br>
+                        <label>Experience</label><br>
+                        <input type="text"><br>
+                        <label>Phone</label><br>
+                        <input type="text"><br>
+                        <label>Skills</label><br>
+                        <select class="select" id="add-skill-drpdown">
+                            <option disabled selected>Add Skills</option>
+                            <option value="HTML">HTML</option>
+                            <option value="CSSL">CSS</option>
+                            <option value="JS">JS</option>
+                            <option value="MySQL">MySQL</option>
+                        </select>
+                    </div>
+                    <section class="modal-btn_section">
+                        <button id="cancel-btn">Cancel</button>
+                        <button id="edt-btn">Edit</button>
+
+                    </section>
+                </section>
+            </section>
+        </section>
+    </main>
+    <footer class="footer">
+        <p class="copyright"> ©2018-2019 DeveloperHero|All rights reserved</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>
