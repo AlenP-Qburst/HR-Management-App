@@ -369,7 +369,8 @@ tr td:last-child {
 
 }
 
- #add-skill-drpdown {
+ #add-skill-select,
+ #update-skill-select {
     width: 100%;
     margin-bottom: 15px;
  } 

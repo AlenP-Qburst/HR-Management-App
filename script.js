@@ -1,15 +1,14 @@
+//loading data to the table from two JSON files
 fetch("./data.json")
     .then(response =>
         response.json())
-    .then(data => {
-        fetch("./skills.json")
-            .then(res => res.json())
-            .then(skills =>
-                (emplData(data, skills)))
-    });
- 
- 
-function emplData(data, skillSet) {
+    .then(data => {fetch("./skills.json")
+    .then(res => res.json())
+    .then(skills =>
+    (emplData(data,skills)))});
+
+let newArr=[];
+function emplData(data,skillSet) {
     let thead = document.getElementById("thead");
     let tableRowHead = document.createElement("tr");
     tableRowHead.setAttribute("id", "tr_head");
@@ -33,44 +32,29 @@ function emplData(data, skillSet) {
         tbody.appendChild(tableRowData);
     });
 }
-//Add-Modal Box
+
+ //Modal Box- add and update
 let modal = document.getElementById("modal-box");
-let editModal = document.getElementById("edit-modal-content")
-// Get the button that opens the modal
+let editModal = document.getElementById("edit-modal")
 let btn = document.getElementById("add-btn");
- 
-// Get the <span> element that closes the modal
-let span = document.getElementsByTagName("span")[0];
- 
-// When the user clicks on the button, open the modal
+let span = document.getElementsByTagName("span")[1];
 btn.onclick = function () {
     modal.style.display = "block";
- 
 }
- 
-// When the user clicks on <span> (x), close the modal
-span.onclick = function () {
+//close the modal when clicked on close symbol
+span.onclick = function () {                  
     modal.style.display = "none";
     editModal.style.display = "none";
 }
- 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
-    if (event.target == modal) {
+    if (event.target == modal || event.target == editModal) {
         modal.style.display = "none";
- 
+        editModal.style.display = "none";
     }
 }
-// Delete-Modal Box
-function dltModal() {
-    let dltModal = document.getElementById("dlt-modal");
-    dltModal.style.display = "block";
-    let noBtn = document.getElementById("no-btn");
-    noBtn.addEventListener("click", () => {
-        dltModal.style.display = "none";
-    })
-}
- 
+// Update and delete modal display
+
 function edtModal() {
     let edtModal = document.getElementById("edit-modal");
     edtModal.style.display = "block";
@@ -80,53 +64,88 @@ function edtModal() {
     })
  
 }
- 
- 
-//filter dropdown
- 
-let filterDropdown = document.getElementById("filter-box-head");
-let filterList = document.getElementById("filter-list");
-filterDropdown.addEventListener("click", () => {
- 
-    if (filterList.style.display == "block") {
-        filterList.style.display = "none";
-    } else
-        filterList.style.display = "block";
-})
- 
- 
-//skill dropdown inside Add-Modal box
- 
+function dltModal() {
+    let dltModal = document.getElementById("dlt-modal");
+    dltModal.style.display = "block";
+    let noBtn = document.getElementById("no-btn");
+    noBtn.addEventListener("click", () => {
+        dltModal.style.display = "none";
+    })
+}
+  
+//Load dropdown datas from JSON
+
 fetch("./skills.json")
     .then(resp => resp.json())
     .then(skills => skillList(skills));
  
 function skillList(skills) {
+    let filterSelect=document.getElementById("filter-select");
+    let addSkillSelect=document.getElementById("add-skill-select");
+    let updateSkillSelect=document.getElementById("update-skill-select");
     skills.forEach(item => {
-        let skillList = document.getElementById("skill-list");
-        let listItem = document.createElement("li");
-        listItem.setAttribute("class", "skill-list-items")
-        listItem.innerHTML = `<li>${item.skill_name}</li>`;
-        skillList.appendChild(listItem);
-    });
-    let skill_dropdown = document.getElementById("skill-box-head");
-    let skillList = document.getElementById("skill-list");
-    skill_dropdown.addEventListener("click", () => {
- 
-        if (skillList.style.display == "block") {
-            skillList.style.display = "none";
-        } else
-            skillList.style.display = "block";
+        let addSkillOPtions=document.createElement("option");
+        addSkillOPtions.innerHTML=`<option value="${item.skill_name}">${item.skill_name}</option>`
+        addSkillSelect.appendChild(addSkillOPtions);
+         let filterOptions=document.createElement("option");
+        filterOptions.innerHTML=`<option value="${item.skill_name}">${item.skill_name}</option>`
+        filterSelect.appendChild(filterOptions);
+        let updateSkillOption=document.createElement("option")
+        updateSkillOption.innerHTML=`<option value="${item.skill_name}">${item.skill_name}</option>`
+        updateSkillSelect.appendChild(updateSkillOption);
     })
 }
-//sort dropdown
+
+//Sorting feature
+
+let nameAscn=document.getElementById("name-ascn");
+nameAscn.onclick=()=>
+    {console.log("name asn click")};
+
+
+function sortTable(columnIndex, order) {
+    console.log("click");
+    let table = document.getElementById("table");
+    let switching, rowArr, x, y, i,shouldSwap;
+    switching = true;
+    while (switching) {
+        switching = false;
+        rowArr = table.rows;
+        for (i = 1; i < (rowArr.length - 1); i++) {
+            shouldSwap = false;
+            x = rowArr[i].getElementsByTagName("TD")[columnIndex];
+            y = rowArr[i + 1].getElementsByTagName("TD")[columnIndex];
+            if (order) {
+                if ((columnIndex !== 0 && x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) || (columnIndex == 0 && Number(x.innerHTML) > Number(y.innerHTML))) {
+                    shouldSwap = true;
+                    break;
+                }
+            } 
+            else {
+                if ((columnIndex !== 0 && x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) || (columnIndex == 0 && Number(x.innerHTML) < Number(y.innerHTML))) {
+                    shouldSwap = true;
+                    break;
+                }
+            }
+        }
+        if (shouldSwap) {
+            rowArr[i].parentNode.insertBefore(rowArr[i + 1], rowArr[i]);
+            switching = true;
+        }
+    }
+
+}
+
+ //Filtering feature
  
-let sortDropdown = document.getElementById("sort-box-head");
-let sortList = document.getElementById("sort-list");
-sortDropdown.addEventListener("click", () => {
- 
-    if (sortList.style.display == "block") {
-        sortList.style.display = "none";
-    } else
-        sortList.style.display = "block";
-})
+
+
+
+
+
+
+            
+//  let update=document.getElementById("tbody");
+//  update.addEventListener("click",() =>{
+//     modal.style.display ="block";
+//  })     
