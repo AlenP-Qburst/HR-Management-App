@@ -1,14 +1,19 @@
 //loading data to the table from two JSON files
+
+
 fetch("./data.json")
     .then(response =>
         response.json())
-    .then(data => {fetch("./skills.json")
-    .then(res => res.json())
-    .then(skills =>
-    (emplData(data,skills)))});
+    .then(data => {
+        fetch("./skills.json")
+            .then(res => res.json())
+            .then(skills =>
+                (emplData(data, skills)))
+    });
 
-let newArr=[];
-function emplData(data,skillSet) {
+let newArr = [];
+
+function emplData(data, skillSet) {
     let thead = document.getElementById("thead");
     let tableRowHead = document.createElement("tr");
     tableRowHead.setAttribute("id", "tr_head");
@@ -33,7 +38,11 @@ function emplData(data,skillSet) {
     });
 }
 
- //Modal Box- add and update
+//----------------------------------------------------------------------------------------------//
+
+
+//Modal Box- add and update
+
 let modal = document.getElementById("modal-box");
 let editModal = document.getElementById("edit-modal")
 let btn = document.getElementById("add-btn");
@@ -42,7 +51,7 @@ btn.onclick = function () {
     modal.style.display = "block";
 }
 //close the modal when clicked on close symbol
-span.onclick = function () {                  
+span.onclick = function () {
     modal.style.display = "none";
     editModal.style.display = "none";
 }
@@ -53,6 +62,10 @@ window.onclick = function (event) {
         editModal.style.display = "none";
     }
 }
+
+//------------------------------------------------------------------------------------------------//
+
+
 // Update and delete modal display
 
 function edtModal() {
@@ -62,8 +75,9 @@ function edtModal() {
     cancelBtn.addEventListener("click", () => {
         edtModal.style.display = "none";
     })
- 
+
 }
+
 function dltModal() {
     let dltModal = document.getElementById("dlt-modal");
     dltModal.style.display = "block";
@@ -72,41 +86,36 @@ function dltModal() {
         dltModal.style.display = "none";
     })
 }
-  
-//Load dropdown datas from JSON
 
-fetch("./skills.json")
-    .then(resp => resp.json())
-    .then(skills => skillList(skills));
- 
-function skillList(skills) {
-    let filterSelect=document.getElementById("filter-select");
-    let addSkillSelect=document.getElementById("add-skill-select");
-    let updateSkillSelect=document.getElementById("update-skill-select");
-    skills.forEach(item => {
-        let addSkillOPtions=document.createElement("option");
-        addSkillOPtions.innerHTML=`<option value="${item.skill_name}">${item.skill_name}</option>`
-        addSkillSelect.appendChild(addSkillOPtions);
-         let filterOptions=document.createElement("option");
-        filterOptions.innerHTML=`<option value="${item.skill_name}">${item.skill_name}</option>`
-        filterSelect.appendChild(filterOptions);
-        let updateSkillOption=document.createElement("option")
-        updateSkillOption.innerHTML=`<option value="${item.skill_name}">${item.skill_name}</option>`
-        updateSkillSelect.appendChild(updateSkillOption);
-    })
-}
+
+//------------------------------------------------------------------------------------------------//
+
 
 //Sorting feature
 
-let nameAscn=document.getElementById("name-ascn");
-nameAscn.onclick=()=>
-    {console.log("name asn click")};
-
+let sortSelect = document.getElementById("sort-select");
+sortSelect.addEventListener("change", () => {
+    let sortSelect = document.getElementById("sort-select");
+    let value = sortSelect.options[sortSelect.selectedIndex].value;
+    switch (value) {
+        case "Emp-ID (ascending)":
+            sortTable(0, true);
+            break;
+        case "Emp-ID (descending)":
+            sortTable(0, false);
+            break;
+        case "Alphabetic (a-z)":
+            sortTable(1, true);
+            break;
+        case "Alphabetic (z-a)":
+            sortTable(1, false);
+            break;
+    }
+});
 
 function sortTable(columnIndex, order) {
-    console.log("click");
     let table = document.getElementById("table");
-    let switching, rowArr, x, y, i,shouldSwap;
+    let switching, rowArr, x, y, i, shouldSwap;
     switching = true;
     while (switching) {
         switching = false;
@@ -120,8 +129,7 @@ function sortTable(columnIndex, order) {
                     shouldSwap = true;
                     break;
                 }
-            } 
-            else {
+            } else {
                 if ((columnIndex !== 0 && x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) || (columnIndex == 0 && Number(x.innerHTML) < Number(y.innerHTML))) {
                     shouldSwap = true;
                     break;
@@ -135,17 +143,33 @@ function sortTable(columnIndex, order) {
     }
 
 }
-
- //Filtering feature
- 
+//-----------------------------------------------------------------------------------------------//
 
 
+//Filter table data based on skills
+
+function filterFunction() {
+    let dataAcquired;
+    let userInput = document.getElementById("filter-input");
+    let inputCaps = userInput.value.toUpperCase();
+    let table = document.getElementById("table");
+    let tr = table.getElementsByTagName("tr");
+    let noOfRows = tr.length;
+
+    for (let i = 0; i < noOfRows; i++) {
+        let rowData = tr[i].getElementsByTagName("td")[4];
+        if (rowData) {
+            dataAcquired = rowData.textContent || rowData.innerHTML;
+
+            if (dataAcquired.toUpperCase().indexOf(inputCaps) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+
+    }
+}
 
 
-
-
-            
-//  let update=document.getElementById("tbody");
-//  update.addEventListener("click",() =>{
-//     modal.style.display ="block";
-//  })     
+//------------------------------------------------------------------------------------------//
