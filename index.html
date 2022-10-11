@@ -56,17 +56,17 @@
 
                     <div class="modal-flex">
                         <label for="emp_id">Employee ID</label><br>
-                        <input type="text" id="emp_id"><br>
+                        <input type="text" id="add-emp-id"><br>
                         <label for="emp_name">Employee Name</label><br>
-                        <input type="text" id="emp_name"><br>
+                        <input type="text" id="add-emp-name"><br>
                         <label for="emp_desig">Designation</label><br>
-                        <input type="text" id="emp_desig"><br>
+                        <input type="text" id="add-emp-desig"><br>
                         <label for="email_id">Email-ID</label><br>
-                        <input type="text" id="email_id"><br>
+                        <input type="text" id="add-email-id"><br>
                         <label for="emp_exp">Experience</label><br>
-                        <input type="text" id="emp_exp"><br>
+                        <input type="text" id="add-emp-exp"><br>
                         <label for="emp_phone">Phone</label><br>
-                        <input type="text" id="emp_phone"><br>
+                        <input type="text" id="add-emp-phone"><br>
                         <label>Skills</label><br>
                         <select class="select" id="add-skill-select">
                             <option disabled selected>Add Skills</option>
@@ -75,7 +75,7 @@
                     </div>
 
                     <section id="modal-btn_section" class="modal-btn_section">
-                        <button type="button">Add </button>
+                        <button type="button" id="add-btn" onclick="addEmployee()">Add </button>
                     </section>
                 </section>
             </section>
@@ -98,17 +98,17 @@
                     </div>
                     <div class="modal-flex">
                         <label>Employee ID</label><br>
-                        <input type="text"><br>
+                        <input type="text" id="edit-emp-id"><br>
                         <label>Employee Name</label><br>
-                        <input type="text"><br>
+                        <input type="text" id="edit-emp-name"><br>
                         <label>Designation</label><br>
-                        <input type="text"><br>
+                        <input type="text" id="edit-emp-desig"><br>
                         <label>Email-ID</label><br>
-                        <input type="text"><br>
+                        <input type="text" id="edit-emp-email"><br>
                         <label>Experience</label><br>
-                        <input type="text"><br>
+                        <input type="text" id="edit-emp-exp"><br>
                         <label>Phone</label><br>
-                        <input type="text"><br>
+                        <input type="text" id="edit-emp-phone"><br>
                         <label>Skills</label><br>
                         <select class="select" id="update-skill-select">
                             <option disabled selected>Add Skills</option>

@@ -5,13 +5,16 @@ fetch("./data.json")
     .then(response =>
         response.json())
     .then(data => {
+    localStorage.setItem("employeeData",JSON.stringify(data));
         fetch("./skills.json")
             .then(res => res.json())
-            .then(skills =>
-                (emplData(data, skills)))
+            .then(skills =>{
+                localStorage.setItem("employeeSkills",JSON.stringify(skills))
+                emplData(data, skills)
+            })
     });
 
-let newArr = [];
+
 
 function emplData(data, skillSet) {
     let thead = document.getElementById("thead");
@@ -32,7 +35,7 @@ function emplData(data, skillSet) {
         })
         tableRowData.innerHTML = `<td>${item.emp_id}</td><td>${item.emp_name}</td>
        <td>${item.emp_desig}</td><td>${item.email_id}</td><td>${reqSkill.join(", ")}</td>
-       <td><img src="./images/edit-icon.png" id="edit-btn" onclick="edtModal()">
+       <td><img src="./images/edit-icon.png" id="edit-btn" onclick="edtModal(${item.emp_id})">
        <img src="./images/delete-icon.png" id="dlt-btn" onclick="dltModal()"></td>`
         tbody.appendChild(tableRowData);
     });
@@ -68,13 +71,20 @@ window.onclick = function (event) {
 
 // Update and delete modal display
 
-function edtModal() {
+function edtModal(empId) {
+    console.log(empId)
+    // let edtEmpId=document.getElementById("edit-emp-id").value;
+    // let edtEmpName=document.getElementById("edit-emp-name").value;
+    // let edtEmpDesig=document.getElementById("edit-emp-desig").value;
+    // let edtEmpEmail=document.getElementById("edit-emp-email").value;
+    // let edtEmpExp=document.getElementById("edit-emp-exp").value;
+    // let edtEmpPhone=document.getElementById("edit-emp-phone").value;
     let edtModal = document.getElementById("edit-modal");
     edtModal.style.display = "block";
     let cancelBtn = document.getElementById("cancel-btn");
-    cancelBtn.addEventListener("click", () => {
+    cancelBtn.onclick = () => {
         edtModal.style.display = "none";
-    })
+    }
 
 }
 
@@ -173,3 +183,26 @@ function filterFunction() {
 
 
 //------------------------------------------------------------------------------------------//
+
+
+function addEmployee(){
+let addModal=document.getElementById("modal-box");
+addModal.style.display="none";    
+let empID=document.getElementById("add-emp-id").value;
+let empName=document.getElementById("add-emp-name").value;
+let empDesig=document.getElementById("add-emp-desig").value;
+let empEmail=document.getElementById("add-email-id").value;
+let empExp=document.getElementById("add-emp-exp").value;
+let empPhone=document.getElementById("add-emp-phone").value;
+let table=document.getElementById("table")
+let newRow=document.createElement("tr")
+
+newRow.innerHTML=`<td>${empID}</td><td>${empName}</td><td>${empDesig}</td><td>${empEmail}</td>
+<td>HTML,CSS,JavaScript,Angular,Vue,Rails</td>`;
+table.appendChild(newRow);
+
+}
+
+
+//Add new row to table
+
