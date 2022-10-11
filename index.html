@@ -19,21 +19,18 @@
         <section class="global-width">
             <h1 class="main-heading">Employee List</h1>
             <section class="button-section">
-                <select class="select">
+                <input type="text" id="filter-input" onkeyup="filterFunction()" placeholder="Search skill..">
+                <!-- <select class="select" id="filter-select">
                     <option selected>Filter</option>
-                    <option value="HTML">HTML</option>
-                    <option value="CSSL">CSS</option>
-                    <option value="JS">JS</option>
-                    <option value="MySQL">MySQL</option>
+                    
+                </select> -->
 
-                </select>
-                </select>
-                <select class="select">
-                    <option disabled selected>Sort</option>
-                    <option value="HTML">alphabetic (a-z)</option>
-                    <option value="CSSL">alphabetic (z-a)</option>
-                    <option value="JS">emp-id (ascending)</option>
-                    <option value="MySQL">emp-id (descending)</option>
+                <select class="select" id="sort-select">
+                    <option selected>Sort</option>
+                    <option value="Emp-ID (ascending)" id="id-ascn">Emp-ID (ascending)</option>
+                    <option value="Emp-ID (descending)" id="id-dscn">Emp-ID (descending)</option>
+                    <option value="Alphabetic (a-z)" id="name-ascn">Alphabetic (a-z)</option>
+                    <option value="Alphabetic (z-a)" id="name-dscn">Alphabetic (z-a)</option>
                 </select>
                 <button id="add-btn" type="button">Add Employee</button>
             </section>
@@ -41,10 +38,10 @@
             <section class="table-container">
                 <table id="table" class="table">
                     <thead id="thead" class="thead">
-
+                        <!-- table heading loaded from JSON using javascript -->
                     </thead>
                     <tbody id="tbody" class="tbody">
-
+                        <!-- table body loaded from JSON using javascript -->
                     </tbody>
                 </table>
             </section>
@@ -71,12 +68,8 @@
                         <label for="emp_phone">Phone</label><br>
                         <input type="text" id="emp_phone"><br>
                         <label>Skills</label><br>
-                        <select class="select" id="add-skill-drpdown">
+                        <select class="select" id="add-skill-select">
                             <option disabled selected>Add Skills</option>
-                            <option value="HTML">HTML</option>
-                            <option value="CSSL">CSS</option>
-                            <option value="JS">JS</option>
-                            <option value="MySQL">MySQL</option>
                         </select>
 
                     </div>
@@ -117,12 +110,9 @@
                         <label>Phone</label><br>
                         <input type="text"><br>
                         <label>Skills</label><br>
-                        <select class="select" id="add-skill-drpdown">
+                        <select class="select" id="update-skill-select">
                             <option disabled selected>Add Skills</option>
-                            <option value="HTML">HTML</option>
-                            <option value="CSSL">CSS</option>
-                            <option value="JS">JS</option>
-                            <option value="MySQL">MySQL</option>
+
                         </select>
                     </div>
                     <section class="modal-btn_section">
