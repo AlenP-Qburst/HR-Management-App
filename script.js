@@ -161,7 +161,7 @@ function filterFunction() {
         if (rowData) {
             dataAcquired = rowData.textContent || rowData.innerHTML;
 
-            if (dataAcquired.toUpperCase().indexOf(inputCaps) > -1) {
+            if (dataAcquired.toUpperCase().includes(inputCaps)) {
                 tr[i].style.display = "";
             } else {
                 tr[i].style.display = "none";
