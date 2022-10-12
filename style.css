@@ -184,9 +184,10 @@ button:hover {
     font-size: 18px;
 }
 
-#dlt-btn {
+.dlt-btn {
     padding: 5px;
-    font-size: small;
+    /* font-size: small; */
+    height: 20px;
 }
 
 #filter-input {
@@ -318,7 +319,7 @@ tr td:last-child {
     padding-top: 50px;
 }
 
-#dlt-btn {
+.dlt-btn {
     height: 25px;
 
 }
@@ -331,8 +332,8 @@ tr td:last-child {
     background-color: red;
 }
 
-#edit-btn {
-    height: 20px;
+.edit-btn {
+       height: 20px;
 }
 
 #dltBtn-sect {

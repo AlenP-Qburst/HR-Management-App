@@ -35,8 +35,9 @@ function emplData(data, skillSet) {
         })
         tableRowData.innerHTML = `<td>${item.emp_id}</td><td>${item.emp_name}</td>
        <td>${item.emp_desig}</td><td>${item.email_id}</td><td>${reqSkill.join(", ")}</td>
-       <td><img src="./images/edit-icon.png" id="edit-btn" onclick="edtModal(${item.emp_id})">
-       <img src="./images/delete-icon.png" id="dlt-btn" onclick="dltModal()"></td>`
+       <td><img src="./images/edit-icon.png" class="edit-btn" onclick="edtModal(this)" data-id="${item.emp_id}" data-name="${item.emp_name}"
+       data-desig="${item.emp_desig}" data-email ="${item.email_id}" data-exp="${item.emp_exp}" data-phone ="${item.phone}" >
+       <img src="./images/delete-icon.png" class="dlt-btn" onclick="dltModal(this)"></td>`
         tbody.appendChild(tableRowData);
     });
 }
@@ -71,14 +72,14 @@ window.onclick = function (event) {
 
 // Update and delete modal display
 
-function edtModal(empId) {
-    console.log(empId)
-    // let edtEmpId=document.getElementById("edit-emp-id").value;
-    // let edtEmpName=document.getElementById("edit-emp-name").value;
-    // let edtEmpDesig=document.getElementById("edit-emp-desig").value;
-    // let edtEmpEmail=document.getElementById("edit-emp-email").value;
-    // let edtEmpExp=document.getElementById("edit-emp-exp").value;
-    // let edtEmpPhone=document.getElementById("edit-emp-phone").value;
+function edtModal(iconTag) {
+
+    let edtEmpId = document.getElementById("edit-emp-id").value = iconTag.dataset.id;
+    let edtEmpName = document.getElementById("edit-emp-name").value = iconTag.dataset.name;
+    let edtEmpDesig = document.getElementById("edit-emp-desig").value = iconTag.dataset.desig;
+    let edtEmpEmail = document.getElementById("edit-emp-email").value = iconTag.dataset.email;
+    let edtEmpExp = document.getElementById("edit-emp-exp").value = iconTag.dataset.exp;
+    let edtEmpPhone = document.getElementById("edit-emp-phone").value = iconTag.dataset.phone;
     let edtModal = document.getElementById("edit-modal");
     edtModal.style.display = "block";
     let cancelBtn = document.getElementById("cancel-btn");
@@ -88,13 +89,27 @@ function edtModal(empId) {
 
 }
 
-function dltModal() {
+
+//Delete Modal display and data deletion from the table
+
+
+
+function dltModal(r) {
+    
     let dltModal = document.getElementById("dlt-modal");
     dltModal.style.display = "block";
     let noBtn = document.getElementById("no-btn");
-    noBtn.addEventListener("click", () => {
+    noBtn.onclick = () => {
         dltModal.style.display = "none";
-    })
+    }
+    
+    let yesBtn = document.getElementById("yes-btn");
+    yesBtn.onclick = () => {
+        dltModal.style.display = "none"; 
+        var i = r.parentNode.parentNode.rowIndex;
+        document.getElementById("table").deleteRow(i);
+        
+    }  
 }
 
 
@@ -185,6 +200,9 @@ function filterFunction() {
 //------------------------------------------------------------------------------------------//
 
 
+//Add new employee
+
+
 function addEmployee(){
 let addModal=document.getElementById("modal-box");
 addModal.style.display="none";    
@@ -194,15 +212,17 @@ let empDesig=document.getElementById("add-emp-desig").value;
 let empEmail=document.getElementById("add-email-id").value;
 let empExp=document.getElementById("add-emp-exp").value;
 let empPhone=document.getElementById("add-emp-phone").value;
-let table=document.getElementById("table")
+let tableBody=document.querySelector(".tbody");
 let newRow=document.createElement("tr")
+newRow.setAttribute("class", "tr_data");
 
-newRow.innerHTML=`<td>${empID}</td><td>${empName}</td><td>${empDesig}</td><td>${empEmail}</td>
-<td>HTML,CSS,JavaScript,Angular,Vue,Rails</td>`;
-table.appendChild(newRow);
+newRow.innerHTML=`<td>${empID}</td><td>${empName}</td><td>${empDesig}</td><td>${empEmail}</td><td> </td>
+<td><img src="./images/edit-icon.png" class="edit-btn"></img><img src="./images/delete-icon.png" class="dlt-btn" onclick="dltModal(this)"</td>`
+tableBody.appendChild(newRow);
 
 }
 
 
-//Add new row to table
+
+
 

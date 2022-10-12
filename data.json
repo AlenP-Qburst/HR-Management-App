@@ -1,10 +1,11 @@
 [{
-        "emp_id": 9,
+        "emp_id": 4,
         "emp_name": "Kris",
         "emp_desig": "Developer",
         "emp_exp": "2+ years",
         "email_id": "kriskat43@gmail.com",
-        "skills": [1, 2, 3, 4]
+        "phone":944662585,
+        "skills": [1, 2, 3, 6]
     },
     {
         "emp_id": 6,
@@ -12,32 +13,55 @@
         "emp_desig": "Developer",
         "emp_exp": "4+ years",
         "email_id": "ralphtick983@gmail.com",
+        "phone":944662585,
         "skills": [4, 2, 3, 5, 7]
     },
     {
-        "emp_id": 11,
+        "emp_id": 1,
         "emp_name": "cLoffy",
         "emp_desig": "Data Engineer",
         "emp_exp": "4+ years",
         "email_id": "loffytophy88@gmail.com",
-        "skills": [1, 2, 3, 4]
+        "phone":944662585,
+        "skills": [1, 5, 3, 4]
     },
     {
-        "emp_id": 12,
+        "emp_id": 2,
         "emp_name": "urwrfdsfdsds",
         "emp_desig": "BA",
         "emp_exp": "5+ years",
         "email_id": "vivanark11@gmail.com",
+        "phone":944662585,
         "skills": [6, 2, 3, 7, 1]
     },
     {
-        "emp_id": 15,
+        "emp_id": 5,
         "emp_name": "dRamsey",
         "emp_desig": "Developer",
         "emp_exp": "9+ years",
         "email_id": "ramseyjed4@gmail.com",
-        "skills": [1, 2, 3, 4]
+        "phone":944662585,
+        "skills": [7, 2, 3, 4]
+    },
+  
+    {
+        "emp_id": 7,
+        "emp_name": "abRalph",
+        "emp_desig": "BD",
+        "emp_exp": "4+ years",
+        "email_id": "ralphtick983@gmail.com",
+        "phone":944662585,
+        "skills": [1, 3, 5, 6]
+    },
+  
+    {
+        "emp_id": 3,
+        "emp_name": "Ralph",
+        "emp_desig": "BS",
+        "emp_exp": "4+ years",
+        "email_id": "ralphtick983@gmail.com",
+        "phone":944662585,
+        "skills": [4, 1, 5, 3]
     }
-
 
 ]
